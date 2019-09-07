@@ -1,0 +1,20 @@
+PODS:
+  - FittedSheets (1.4.4)
+  - iOSDropDown (0.3.4)
+
+DEPENDENCIES:
+  - FittedSheets
+  - iOSDropDown
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - FittedSheets
+    - iOSDropDown
+
+SPEC CHECKSUMS:
+  FittedSheets: f56b96c7bd81585d9a183c2a06abe176fa0b55db
+  iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
+
+PODFILE CHECKSUM: 166adc21eb449edc8e78348235c2b0b15a416a37
+
+COCOAPODS: 1.7.5
