@@ -45,6 +45,7 @@ extension HotelVO {
             .init(name: "The Westeen", address: "Gulshan Circle 2, Dhaka", image: UIImage(imageLiteralResourceName: "hotel3"), price: "$99/day", services: "Free Wifi", rating:"4.5 (21 ratings)", facality: "Swimming",discount: "Get 50% Off"),
             
             .init(name: "Radison Blu", address: "Airport Road, Dhaka ", image: UIImage(imageLiteralResourceName: "hotel4"), price: "$89/day", services: "Free Wifi", rating: "4.5 (21 ratings)", facality: "Golf Club and Gym",discount: "Free Buffet Dinner"),
+            
             .init(name: "The Westeen", address: "Gulshan Circle 2, Dhaka", image: UIImage(imageLiteralResourceName: "hotel5"), price: "$99/day", services: "Free Wifi", rating:"4.5 (21 ratings)", facality: "Swimming",discount: "Get 50% Off"),
             
             .init(name: "Radison Blu", address: "Airport Road, Dhaka ", image: UIImage(imageLiteralResourceName: "hotel6"), price: "$89/day", services: "Free Wifi", rating: "4.5 (21 ratings)", facality: "Golf Club and Gym",discount: "Free Buffet Dinner")
@@ -52,11 +53,15 @@ extension HotelVO {
         ]
     }
     
-    static func getPopularHotel() -> [HotelVO] {
+    static func getTopSearchHotels() -> [HotelVO] {
         return [
-            .init(name: "Popular", address: "Gulshan Circle 2, Dhaka", image: UIImage(imageLiteralResourceName: "hotel3"), price: "$99/day", services: "Free Wifi", rating:"4.5 (21 ratings)", facality: "Swimming",discount: "Get 50% Off"),
+            .init(name: "Hua Hin Thailand", address: "Gulshan Circle 2, Dhaka", image: UIImage(imageLiteralResourceName: "hotel6"), price: "$99/day", services: "Free Wifi", rating:"4.5 (21 ratings)", facality: "Swimming",discount: "Get 50% Off"),
             
-            .init(name: "Radison Blu", address: "Airport Road, Dhaka ", image: UIImage(imageLiteralResourceName: "hotel4"), price: "$89", services: "Free Wifi", rating: "4.5 (21 ratings)", facality: "Golf Club and Gym",discount: "Free Buffet Dinner")
+            .init(name: "Radison Blu", address: "Airport Road, Dhaka ", image: UIImage(imageLiteralResourceName: "hotel5"), price: "$89", services: "Free Wifi", rating: "4.7 (28 ratings)", facality: "Golf Club and Gym",discount: "Free Buffet Dinner"),
+            
+            .init(name: "The Menor", address: "Gulshan Circle 2, Dhaka", image: UIImage(imageLiteralResourceName: "hotel3"), price: "$149/day", services: "Free Wifi", rating:"4.5 (21 ratings)", facality: "Swimming",discount: "Get 50% Off"),
+            
+            .init(name: "Sindy Hotel", address: "Airport Road, Dhaka ", image: UIImage(imageLiteralResourceName: "hotel4"), price: "$203", services: "Free Wifi", rating: "6.2 (37 ratings)", facality: "Golf Club and Gym",discount: "Free Buffet Dinner")
             
         ]
     }

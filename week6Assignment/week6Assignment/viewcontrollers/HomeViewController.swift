@@ -18,31 +18,18 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var imageViewProfile: UIImageView!
    
     
-    
     var mData = HotelVO.getNearByHotel()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Dropdown
-        dropDown.optionArray = ["Dhaka", "Yangon", "New York","Hua Hin"]
-        //Its Id Values and its optional
-        dropDown.optionIds = [1,23,54,22]
-        
-     
-        //badge notification
-        let notificationButton = SSBadgeButton()
-        notificationButton.frame = CGRect(x: view.frame.width - 22, y: view.frame.height - 22, width: 44, height: 44)
-        notificationButton.setImage(imageViewProfile.image?.withRenderingMode(.alwaysTemplate), for: .normal)
-        notificationButton.badgeEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 15)
-        notificationButton.badge = "3"
-        view.addSubview(notificationButton)
-
-       
-        
-
+        tableViewHome.separatorStyle = .none
         imageViewProfile.layer.cornerRadius = imageViewProfile.frame.width / 2
+      
+        setupDropDown()
+        setupBadgeNoti()
+        
         tableViewHome.delegate = self
         tableViewHome.dataSource = self
         
@@ -50,7 +37,25 @@ class HomeViewController: UIViewController {
         tableViewHome.registerForCell(strID: String(describing: CustomSectionHeaderTableViewCell.self))
     }
     
+    
+    func setupDropDown(){
+        // Dropdown
+        dropDown.optionArray = ["Dhaka", "Yangon", "New York","Hua Hin"]
+        //Its Id Values and its optional
+        dropDown.optionIds = [1,23,54,22]
+    }
 
+    
+    func setupBadgeNoti(){
+        //badge notification
+        let notificationButton = SSBadgeButton()
+        notificationButton.frame = CGRect(x:350, y: 60, width: 44, height: 44)
+        // notificationButton.setImage(imageViewProfile.image?.withRenderingMode(.alwaysTemplate), for: .normal)
+        notificationButton.badgeEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 15)
+        notificationButton.badge = "3"
+        view.addSubview(notificationButton)
+
+    }
     
 }
 

@@ -19,31 +19,24 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var txtFieldRooms: UITextField!
     @IBOutlet weak var txtFieldCheckOut: UITextField!
     @IBOutlet weak var txtFieldCount: UITextField!
-   
-    
+    @IBOutlet weak var btnSearch: UIButton!
+    @IBOutlet weak var imgViewMap: UIButton!
     @IBOutlet weak var collectionViewSearch: UICollectionView!
     
     private var datePicker: UIDatePicker?
     
-    
-    //To calculate flowlayout
-//    let numberOfItemsPerRow : CGFloat = 1.0
-//    let spacing : CGFloat = 5
-//
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func setupLayout(){
         let layout = collectionViewSearch.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumLineSpacing = 20
         layout.itemSize = CGSize(width: (self.view.frame.width - 50), height: 200)
-
-        //check-in and out
-        datePicker = UIDatePicker()
-        datePicker?.datePickerMode = .date
-        datePicker?.addTarget(self, action: #selector(self.selectDate(datePicker:)), for:.valueChanged)
-        txtfieldCheckIn.inputView = datePicker
-        txtFieldCheckOut.inputView = datePicker
+        btnSearch.layer.cornerRadius = 5
+        imgViewMap.layer.cornerRadius = 5
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupLayout()
+        setupDatePicker()
         
         
         //collection view
@@ -52,15 +45,19 @@ class SearchViewController: UIViewController {
         
         //register for supplymentary section
         collectionViewSearch.register(UINib(nibName: String(describing: CustomSectionCollectionReusableView.self), bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: CustomSectionCollectionReusableView.self))
-        
-        
+
         collectionViewSearch.registerForItem(strID: String(describing:OuterSearchCollectionViewCell.self ))
         
         
-        
-        
-
-        
+    }
+    
+    func setupDatePicker(){
+        //check-in and out
+        datePicker = UIDatePicker()
+        datePicker?.datePickerMode = .date
+        datePicker?.addTarget(self, action: #selector(self.selectDate(datePicker:)), for:.valueChanged)
+        txtfieldCheckIn.inputView = datePicker
+        txtFieldCheckOut.inputView = datePicker
     }
     
     @objc func selectDate(datePicker: UIDatePicker){
@@ -73,31 +70,41 @@ class SearchViewController: UIViewController {
     
     
 
-    @IBAction func btnMap(_ sender: Any) {
-    }
-    @IBAction func btnSearchNow(_ sender: Any) {
-    }
+
     
     @IBAction func btnFilter(_ sender: Any) {
-//        let controller = FilterViewController()
-//        
-//        let sheetController = SheetViewController(controller: controller)
-//        
-//        // It is important to set animated to false or it behaves weird currently
-//        self.present(sheetController, animated: false, completion: nil)
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewcontroller = storyboard.instantiateViewController(withIdentifier: FilterViewController.identifier) as! FilterViewController
-        let sheetController = SheetViewController(controller: viewcontroller)
+        let sheetController = SheetViewController(controller: viewcontroller,sizes:[.fixed(550)])
+        
+        // Adjust how the bottom safe area is handled on iPhone X screens
+        sheetController.blurBottomSafeArea = false
+        sheetController.adjustForBottomSafeArea = true
+        
+        // Turn off rounded corners
+        sheetController.topCornersRadius = 0
+        
+        // Make corners more round
+        sheetController.topCornersRadius = 15
+        
+        // Disable the dismiss on background tap functionality
+        sheetController.dismissOnBackgroundTap = false
+        
+        // Extend the background behind the pull bar instead of having it transparent
+        sheetController.extendBackgroundBehindHandle = true
+        
+        // Change the overlay color
+        sheetController.overlayColor = UIColor.gray
+        
+        // Change the handle color
+        sheetController.handleColor = UIColor.purple
         self.present(sheetController, animated: false, completion: nil)
         
        
     }
 
-    
-    
-
 }
+
 
 extension SearchViewController : UICollectionViewDelegate{
     //for section header- supplementary
@@ -111,6 +118,9 @@ extension SearchViewController : UICollectionViewDelegate{
     }
     
 }
+
+
+
 extension SearchViewController :UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1

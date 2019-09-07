@@ -11,7 +11,7 @@ import UIKit
 class OuterSearchCollectionViewCell: UICollectionViewCell {
 
    
-     var mData = HotelVO.getPopularHotel()
+     var mData = HotelVO.getTopSearchHotels()
     @IBOutlet weak var innerCollectionView: UICollectionView!
     
     
@@ -22,7 +22,7 @@ class OuterSearchCollectionViewCell: UICollectionViewCell {
 
         
         let layout = innerCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.minimumLineSpacing = 20
+        layout.minimumLineSpacing = 10
         layout.itemSize = CGSize(width:innerCollectionView.frame.width - 120 , height: innerCollectionView.frame.height)
         
         // Initialization code
